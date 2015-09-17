@@ -38,19 +38,11 @@ def convert_to_arabic(numerals)
     if(last_arabic_value >= arabic_value)
       answer += arabic_value
     else
-      answer += (arabic_value - last_arabic_value)
+      answer += (arabic_value - (last_arabic_value * 2))
     end
 
     used_numerals << numeral
-    p used_numerals
   end
 
   return answer
 end
-
-# p convert_to_arabic("I")
-p convert_to_arabic("III")
-# p convert_to_arabic("V")
-# p convert_to_arabic("X")
-p convert_to_arabic("IX") # Fix this
-p convert_to_arabic("IV") # Fix this
