@@ -32,11 +32,17 @@ def convert_to_arabic(numerals)
   used_numerals = ["I"] #starts with "I" so .last won't be nil
 
   numerals_array.each do |numeral|
-    if(get_arabic_value(used_numerals.last) <= get_arabic_value(numeral))
-      answer += get_arabic_value(numeral)
+    arabic_value = get_arabic_value(numeral)
+    last_arabic_value = get_arabic_value(used_numerals.last)
+
+    if(last_arabic_value >= arabic_value)
+      answer += arabic_value
+    else
+      answer += (arabic_value - last_arabic_value)
     end
 
     used_numerals << numeral
+    p used_numerals
   end
 
   return answer
@@ -46,5 +52,5 @@ end
 p convert_to_arabic("III")
 # p convert_to_arabic("V")
 # p convert_to_arabic("X")
-# p convert_to_arabic("IX") # Fix this
-# p convert_to_arabic("IV") # Fix this
+p convert_to_arabic("IX") # Fix this
+p convert_to_arabic("IV") # Fix this
