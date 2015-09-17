@@ -15,7 +15,7 @@ NUMERALS = {
 }
 
 
-def roman(num)
+def convert_to_roman(num)
   answer = ""
   NUMERALS.each do | value, letter |
     answer << letter * (num / value)
@@ -37,18 +37,18 @@ end
 
 
 # Works for some cases. . . until numbers are chained and must be subtracted
-def arabic(letters)
-  answer = 0
-  new_letters = letters.split("")
-  new_letters.each do |letter|
-    answer += NUMERALS.key(letter)
-  end
-  return answer
-end
+# def arabic(letters)
+#   answer = 0
+#   new_letters = letters.split("")
+#   new_letters.each do |letter|
+#     answer += NUMERALS.key(letter)
+#   end
+#   return answer
+# end
 
-p arabic("I")
-p arabic("III")
-p arabic("V")
-p arabic("X")
-p arabic("IX") # Fix this
-p arabic("IV") # Fix this
+# p arabic("I")
+# p arabic("III")
+# p arabic("V")
+# p arabic("X")
+# p arabic("IX") # Fix this
+# p arabic("IV") # Fix this
