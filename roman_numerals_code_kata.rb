@@ -14,14 +14,14 @@ NUMERALS = {
       1 => "I",
 }
 
-@answer = ""
 
 def roman(num)
+  answer = ""
   NUMERALS.each do | value, letter |
-    @answer << letter * (num / value)
+    answer << letter * (num / value)
     num = num % value
   end
-  return @answer
+  return answer
 end
 
 # p roman(5)
@@ -35,12 +35,20 @@ end
 # p roman(1066)
 # p roman(1989)
 
+
+# Works for some cases. . . until numbers are chained and must be subtracted
 def arabic(letters)
-  NUMERALS.each do | value, letter |
-    curren
-    t_letter = letters.pop
-    @answer << letter * (num / value)
-    num = num % value
+  answer = 0
+  new_letters = letters.split("")
+  new_letters.each do |letter|
+    answer += NUMERALS.key(letter)
   end
-  return @answer
+  return answer
 end
+
+p arabic("I")
+p arabic("III")
+p arabic("V")
+p arabic("X")
+p arabic("IX") # Fix this
+p arabic("IV") # Fix this
