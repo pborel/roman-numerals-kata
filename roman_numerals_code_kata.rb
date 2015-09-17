@@ -1,3 +1,5 @@
+require_relative 'helpers'
+
 NUMERALS = {
   1000 => "M",
    900 => "CM",
@@ -14,7 +16,6 @@ NUMERALS = {
       1 => "I",
 }
 
-
 def convert_to_roman(num)
   answer = ""
   NUMERALS.each do | value, letter |
@@ -24,31 +25,26 @@ def convert_to_roman(num)
   return answer
 end
 
-# p roman(5)
-# p roman(3)
-# p roman(4)
-# p roman(10)
-# p roman(9)
-# p roman(2005)
-# p roman(45)
-# p roman(1)
-# p roman(1066)
-# p roman(1989)
-
-
 # Works for some cases. . . until numbers are chained and must be subtracted
-# def arabic(letters)
-#   answer = 0
-#   new_letters = letters.split("")
-#   new_letters.each do |letter|
-#     answer += NUMERALS.key(letter)
-#   end
-#   return answer
-# end
+def convert_to_arabic(numerals)
+  answer = 0
+  numerals_array = numerals.split("")
+  used_numerals = ["I"] #starts with "I" so .last won't be nil
 
-# p arabic("I")
-# p arabic("III")
-# p arabic("V")
-# p arabic("X")
-# p arabic("IX") # Fix this
-# p arabic("IV") # Fix this
+  numerals_array.each do |numeral|
+    if(get_arabic_value(used_numerals.last) <= get_arabic_value(numeral))
+      answer += get_arabic_value(numeral)
+    end
+
+    used_numerals << numeral
+  end
+
+  return answer
+end
+
+# p convert_to_arabic("I")
+p convert_to_arabic("III")
+# p convert_to_arabic("V")
+# p convert_to_arabic("X")
+# p convert_to_arabic("IX") # Fix this
+# p convert_to_arabic("IV") # Fix this
