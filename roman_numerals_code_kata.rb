@@ -29,13 +29,13 @@ end
 def convert_to_arabic(numerals)
   answer = 0
   numerals_array = numerals.split("")
-  used_numerals = ["I"] #starts with "I" so .last won't be nil
+  used_numerals = []
 
   numerals_array.each do |numeral|
     arabic_value = get_arabic_value(numeral)
     last_arabic_value = get_arabic_value(used_numerals.last)
 
-    if(last_arabic_value >= arabic_value)
+    if(used_numerals.last.nil? || last_arabic_value >= arabic_value)
       answer += arabic_value
     else
       answer += (arabic_value - (last_arabic_value * 2))
